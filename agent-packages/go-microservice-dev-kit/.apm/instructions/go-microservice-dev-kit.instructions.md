@@ -3,7 +3,7 @@ description: >
   Umbrella package for Qubership Go microservices. Aggregates all
   required platform libraries and their agent instructions.
   Use when creating or modifying any Qubership Go microservice.
-applyTo: "**/main.go"
+applyTo: "**/*"
 ---
 
 # Qubership Go Microservice Dev Kit
