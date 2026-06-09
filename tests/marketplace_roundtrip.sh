@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Network-free autotest of the marketplace producer -> consumer round-trip.
 #
-# It builds a monorepo-hybrid marketplace from scratch with git and asserts:
+# It asserts this repo's published package manifests are remote-installable,
+# then builds a monorepo-hybrid marketplace from scratch with git and asserts:
+#   0. package manifests do not declare local-path APM dependencies;
 #   1. `apm pack` emits the expected plugin entry (version, tags, local-path source);
 #   2. the release gate passes when the index is in sync and fails on drift;
 #   3. a consumer can register the marketplace, install, inspect, and uninstall;
@@ -14,7 +16,8 @@
 # Run with: make test   (or: bash tests/marketplace_roundtrip.sh)
 set -euo pipefail
 
-req="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/requirements.txt"
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+req="$repo_root/requirements.txt"
 APM="uvx --python 3.12 --from apm-cli --with-requirements $req apm"
 
 real_home="${HOME}"
@@ -32,6 +35,16 @@ pkg="$mkt/agent-packages/demo-pkg"
 
 fail() { echo "FAIL: $*" >&2; exit 1; }
 ok()   { echo "ok: $*"; }
+
+# A package listed by a git marketplace can be resolved as a remote package.
+# APM must reject local-path dependencies in that mode because they point at the
+# consumer's filesystem, not the producer repository.
+local_path_deps="$(rg -n '^[[:space:]]*-[[:space:]]*['\''"]?\.{1,2}(/|['\''"]?[[:space:]]*$)' "$repo_root"/agent-packages/*/apm.yml || true)"
+if [ -n "$local_path_deps" ]; then
+  printf '%s\n' "$local_path_deps" >&2
+  fail "published package manifests must not declare local-path APM dependencies"
+fi
+ok "published package manifests avoid local-path APM dependencies"
 
 write_pkg() {  # $1 = version
   mkdir -p "$pkg/.apm/skills/demo" "$pkg/.apm/instructions"
