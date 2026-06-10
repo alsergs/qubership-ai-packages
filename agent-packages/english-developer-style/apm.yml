@@ -9,7 +9,7 @@ author: Qubership
 #
 # Published marketplace packages are installed as remote packages, so they
 # cannot depend on sibling packages with filesystem-relative paths. Keep this
-# pinned to the commit that introduced english-us-developer-style.
+# pinned to a commit with the trimmed english-us-developer-style description.
 dependencies:
   apm:
-    - Netcracker/qubership-ai-packages/agent-packages/english-us-developer-style#40c4418b64606e547ca8242dfb48fdfeeb34f03a
+    - Netcracker/qubership-ai-packages/agent-packages/english-us-developer-style#0453aca8531265db34d1299519dd5c8dbde1f307
