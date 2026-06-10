@@ -7,9 +7,9 @@ author: Qubership
 # at a concrete dialect. The default moved from British to American with
 # the dialect split, hence the major-version bump.
 #
-# The dependency is a repo-relative path to the sibling package, so it
-# resolves to english-us-developer-style at whatever ref the alias is
-# installed from — no tag, branch, or commit pin to keep in sync.
+# Published marketplace packages are installed as remote packages, so they
+# cannot depend on sibling packages with filesystem-relative paths. Keep this
+# pinned to a commit with the trimmed english-us-developer-style description.
 dependencies:
   apm:
-    - ../english-us-developer-style
+    - Netcracker/qubership-ai-packages/agent-packages/english-us-developer-style#0453aca8531265db34d1299519dd5c8dbde1f307 # main
