@@ -12,4 +12,4 @@ author: Qubership
 # pinned to a commit with the trimmed english-us-developer-style description.
 dependencies:
   apm:
-    - Netcracker/qubership-ai-packages/agent-packages/english-us-developer-style#0453aca8531265db34d1299519dd5c8dbde1f307
+    - Netcracker/qubership-ai-packages/agent-packages/english-us-developer-style#0453aca8531265db34d1299519dd5c8dbde1f307 # main
