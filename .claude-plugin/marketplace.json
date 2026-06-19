@@ -128,8 +128,6 @@
     },
     {
       "name": "adapt-nifi-flows-to-2-x",
-      "description": "Apply NiFi 1.x to 2.x upgrade advisor recommendations to exported flow JSON files.",
-      "version": "1.0.0",
       "tags": [
         "topic:integration",
         "stack:nifi",
@@ -215,6 +213,24 @@
         "path": "agent-packages/qubership-workflow-hub-usage",
         "ref": "161a0752db07017d43739ddd621ee7193cfbc625",
         "sha": "161a0752db07017d43739ddd621ee7193cfbc625"
+      }
+    },
+    {
+      "name": "core-mesh-to-istio-migration",
+      "description": "Orchestrates the full Cloud-Core Mesh to Istio migration end-to-end — converts declarative mesh CRs to Gateway API, migrates route-registration libraries, wires SERVICE_MESH_TYPE, generates HTTPRoutes from code, and maintains MIGRATION_LOG.md.",
+      "version": "1.0.0",
+      "tags": [
+        "topic:migration",
+        "stack:kubernetes",
+        "activity:migration",
+        "audience:public"
+      ],
+      "source": {
+        "source": "git-subdir",
+        "url": "alsergs/qubership-core-control-plane",
+        "path": "agent-packages/core-mesh-to-istio-migration",
+        "ref": "afa7b83d0056235006477b8ce7fd9b353b528871",
+        "sha": "afa7b83d0056235006477b8ce7fd9b353b528871"
       }
     }
   ]
