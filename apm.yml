@@ -110,8 +110,8 @@ marketplace:
       tags: ["topic:devops", "stack:github-actions", "activity:authoring", "activity:code-review", "audience:public"]
 
     - name: core-mesh-to-istio-migration
-      source: alsergs/qubership-core-control-plane
+      source: Netcracker/qubership-core-control-plane
       subdir: agent-packages/core-mesh-to-istio-migration
-      ref: afa7b83d0056235006477b8ce7fd9b353b528871  # main
-      tags: ["topic:migration", "stack:kubernetes", "activity:migration", "audience:public"]
+      ref: 0497e8233bddc287b68c68395b3b303aed998ef9  # main
+      tags: ["topic:cloud-core", "topic:service-mesh", "topic:istio", "activity:migration", "audience:public"]
 
